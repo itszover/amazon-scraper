@@ -1,0 +1,26 @@
+{
+  "name": "nozamam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itszover/nozamam.git"
+  },
+  "author": "José Martinho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itszover/nozamam/issues"
+  },
+  "homepage": "https://github.com/itszover/nozamam#readme",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2",
+    "jsdom": "^24.0.0"
+  }
+}
