@@ -40,4 +40,4 @@ async function getProductsInfo(product) {
   return products;
 }
 
-module.exports = { getProductsInfo };
+module.exports = getProductsInfo;

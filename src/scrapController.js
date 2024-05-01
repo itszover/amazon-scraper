@@ -1,6 +1,6 @@
-const { getProductsInfo } = require("./scraper");
+const getProductsInfo = require("./scraper");
 
-module.exports = async function controller(req, res) {
+async function controller(req, res) {
     try {
       const keyword = req.query.keyword;
   
@@ -16,3 +16,5 @@ module.exports = async function controller(req, res) {
       }
     }
 }
+
+module.exports = controller;
