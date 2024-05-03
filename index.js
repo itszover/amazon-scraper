@@ -1,11 +1,14 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import scrapRouter from './src/scrapRouter.js';
 
 const app = express();
 
-const apiRouter = require("./src/scrapRoute");
-
 app.use(cors());
-app.use('/api/scrap', apiRouter);
+app.use('/api/scrap', scrapRouter);
 
-app.listen('8000' || process.env.PORT);
+const port = process.env.PORT || '8000';
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});

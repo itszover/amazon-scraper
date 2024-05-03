@@ -1,20 +1,24 @@
-const getProductsInfo = require("./scraper");
+import getItemsInfo from "./scraper.js";
 
-async function controller(req, res) {
+/**
+ * Controller function to handle requests and send response.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when the response is sent.
+ */
+async function fetchItemscontroller(req, res) {
     try {
       const keyword = req.query.keyword;
   
-      if (!keyword) {
-        res.status(400).json({ error: "Missing keyword"})
-      } else {
-        res.send(await getProductsInfo(keyword));
-      }
+      if (!keyword) return res.status(400).json({ error: "Missing keyword" }); 
+
+      const itemsInfo = await getItemsInfo(keyword);
+      res.status(200).json(itemsInfo);
   
     } catch (error) {
-      if (res.statusCode !== 200) {
-        res.json({ error: `Error ${res.statusCode}: ${error.message}` });
-      }
+      res.status(500).json({ error: `Internal Server Error: ${error.message}` });
     }
 }
 
-module.exports = controller;
+export default fetchItemscontroller;

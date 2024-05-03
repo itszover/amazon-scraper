@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script defer src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+    <title>Amazon Scrapper</title>
 </head>
+
 <body>
     <main>
-        <form id="search-form">
-            <h1>Search Amazon Products</h1>
-            <input type="text" placeholder="Search Keyword">
-            <button type="submit">Search</button>
-            <span></span>
-        </form>
-        <div class="products-container"></div>
+        <section aria-labelledby="search-heading">
+            <form id="search-form">
+                <h1 id="search-heading">Amazon Search Scrapper</h1>
+                <div class="input-container">
+                    <label for="search-input">Search</label>
+                    <input id="search-input" type="text" placeholder="Insane flaming sword"
+                        aria-label="Search Amazon products">
+                    <button type="submit" aria-label="Start search">Search</button>
+                </div>
+                <span class="error-message" aria-live="assertive"></span>
+            </form>
+        </section>
+        <section class="items-container"></section>
+        <noscript>Please enable Javascript to view this website</noscript>
     </main>
 </body>
+
 </html>
