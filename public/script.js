@@ -24,16 +24,15 @@ function displayError(message) {
  */
 async function getSearchResult(search) {
     try {
-        const apiURL = `http://localhost:8000/api/scrap?keyword=${encodeURIComponent(search)}`;
-        const response = await fetch(apiURL);
+        const endpoint = `http://localhost:8000/api/scrap?keyword=${encodeURIComponent(search)}`;
+        const response = await fetch(endpoint);
         
         if (!response.ok) throw new Error(`Failed to fetch search results`);
-
-        return response.json();
-
+        
+        return await response.json();
     } catch (error) {
-        displayError(error.message);
-        console.error(`There has been a problem with your fetch operation: ${error.message}`);
+        displayError("Server is not responding. Run startup.bat.");
+        console.error(error.message);
     }
 }
 
@@ -71,14 +70,14 @@ async function displayItems(item) {
         const items = await getSearchResult(item);
         const fragment = document.createDocumentFragment();
     
-        items.forEach(item => {
+        items?.forEach(item => {
             const itemElement = createItemElement(item);
             fragment.appendChild(itemElement);
         });
     
         itemsContainer.appendChild(fragment);
     } catch (error) {
-        displayError('coco bosta' + error.message);
+        displayError(error.message);
         console.error(error.message);
     }
 }

@@ -1,9 +1,10 @@
-@echo off
-rem Abrir o arquivo HTML específico
-start "" "./public/index.html"
+@ECHO OFF
 
-rem Instalar as dependências do projeto
-call install.bat
+REM install the dependencies
+CALL npm install
 
-rem Executar o arquivo JavaScript com o Node.js
-node index.js
+REM open the browser
+START "" "public/index.html"
+
+REM starts the server
+CALL node server.js

@@ -35,6 +35,13 @@ async function getAmazonResultPageHTML(search) {
  * @returns {Promise<Array<Object>>} - A promise that resolves to an array of item objects.
  */
 async function getItemsInfo(search) {
+  const originalConsoleError = console.error;
+  const jsDomCssError = 'Error: Could not parse CSS stylesheet';
+  console.error = (...params) => {
+      if (!params.find(param => param.toString().includes(jsDomCssError))) {
+          originalConsoleError(...params);
+        }
+      };
   const html = await getAmazonResultPageHTML(search);
   const document = new JSDOM(html).window.document;
   // Extract product information from the search result page container.
